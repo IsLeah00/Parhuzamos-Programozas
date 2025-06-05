@@ -116,6 +116,30 @@ conf
 pvmcc program.c -o program
 ```
 
+or
+
+```bash
+gcc -I/usr/include/pvm3 program.c -L/usr/lib/x86_64-linux-gnu -lpvm3 -o program
+```
+
+or add manually
+```bash
+sudo nano /usr/local/bin/pvmcc
+
+sudo chmod +x /usr/local/bin/pvmcc
+```
+
+and add this content into pvmcc
+```bash
+#!/bin/bash
+gcc -I/usr/include/pvm3 "$@" -L/usr/lib/x86_64-linux-gnu -lpvm3
+```
+
+#### Kill
+```bash
+pkill pvmd
+```
+
 #### Run
 ```bash
 spawn program
@@ -123,5 +147,5 @@ spawn program
 
 #### Exit PVM
 ```bash
-exit
+quit
 ```
